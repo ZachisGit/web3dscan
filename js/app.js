@@ -161,8 +161,65 @@ function fetchHandstuecke() {
         // },
         onEachFeature: onEachFeature_asTable
       }).addTo(map);
-      layerControl.addOverlay(handstuecke_geoJSON, "Handst&uuml;cke");
+
+      // Added onClick function to each red dot on the map
+      layerControl.addOverlay(handstuecke_geoJSON.on("click", markerOnClick), "Handst&uuml;cke");
     });
+}
+
+
+async function loadSteckbrief(objectName){
+
+  // read text from URL location
+  var request = new XMLHttpRequest();
+  var url = "./steckbriefe/"+objectName+".txt"
+  request.open('GET', url, true);
+  request.send(null);
+  request.onreadystatechange = function () {
+      if (request.readyState === 4 && request.status === 200) {
+          var type = request.getResponseHeader('Content-Type');
+          if (type.indexOf("text") !== 1) {
+
+              // Display response text if it exists
+              var steckbriefText = request.responseText; //.replaceAll("\n","<br/>");
+              document.getElementById("steckbrief-text").innerHTML = steckbriefText;
+
+              /* JSON EXAMPLE */
+              var steckbriefJson = JSON.parse(steckbriefText);
+
+              document.getElementById("alter").innerHTML = steckbriefJson["Alter"];
+              /* */
+
+              return request.responseText;
+          }
+      }
+      else {
+        document.getElementById("steckbrief-text").innerHTML = "Kein Steckbrief gefunden!";
+      }
+  }
+}
+
+async function  markerOnClick(layer) {
+
+  // Id of the object that was clicked, the one responding to the small red circle on the map that 
+  // we have clicked on
+  var objectName = layer["layer"]["feature"]["id"];
+
+  // Changing the model-viewers 3d file source with the model named like the id of the red circle.
+  // Models correspond to a red circle by its id and their name.
+  var modelViewer = document.getElementById("hotspot-camera")
+  modelViewer.style.visibility= "visible";
+  modelViewer.src="./models/"+objectName+".glb";
+  modelViewer.onerror = function(){
+    modelViewer.style.visibility= "hidden";
+    document.getElementById("hotspot-camera").src="";
+  };
+
+  // Loading the Steckbrief with the right file name (identical to the 3d model loading on click).
+  loadSteckbrief(objectName);
+
+
+  console.log("Clicked on object: "+objectName);
 }
 
 function initModelViewer() {

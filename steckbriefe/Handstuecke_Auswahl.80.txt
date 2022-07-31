@@ -1,0 +1,10 @@
+{
+	"Alter": "344 Millionen Jahre (Karbon)", 
+	"Fundort": "ehemaliger Abbau am Steigkopf",
+	"Literatur": ["Einstein et. al ...", "Edgar wasser et al. 2019"],
+	"Molecules": 
+	{
+		"Surface": "rust"
+	},
+	"Description": ""
+}
