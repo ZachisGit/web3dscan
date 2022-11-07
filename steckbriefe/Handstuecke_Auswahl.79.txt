@@ -1,10 +1,33 @@
 <h3><b>Steckbrief test</b></h3>
 <br>
-<b>Alter:</b> 69
+<b>Ueberschrift:</b> 
 <br>
-<ul>
-	<li>OHFOIWEJHFOIWEJF</li>
-	<li>qefijweüfkwe</li>
-	<li>wlf</li>
-	<li>fülwe</li>
-</ul>
+<br>
+<b>Alter:</b>
+</br>
+<br>
+<b>Fundort:</b>
+</br>
+<br>
+<b>Koordinaten Fundort:</b>
+</br>
+<br>
+<b>Kurzbeschreibung</b>
+</br>
+<br>
+<b>Art der Gesteinsprobe:</b>
+</br>
+<br>
+<b>weitere Vorkommen:</b>
+</br>
+<br>
+<b>Nutzung</b>
+</br>
+</br>
+<br>
+<b>Eigenschaften:</b>
+</br>
+</br>
+<br>
+<b>Groesse:</b>
+</br>
